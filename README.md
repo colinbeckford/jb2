@@ -5,8 +5,10 @@
 Created through Java Swing Designer, this frame application serves as a clicker for the technical portion of yo-yo routines, but also has extra data points such as the percentage of total clicks that were given as "+2" difficult clicks, the clicks per second at the end of the routine, and even an exported CSV of the seconds that the user gave +1, +2, or -1. 
 
 In order for this program for work, here are a set of instructions:
+
 IN THE CODE - 
-Edit the fileWriter in line 260 to enter your preferred location for the final CSV file.
+1) Edit the fileWriter in line 260 to enter your preferred location for the final CSV file.
+
 IN THE PROGRAM - 
 1) Enter in the judge name, player name, youtube link, and competition/round of the performance into the texts boxes. 
 2) Press the submit button.
