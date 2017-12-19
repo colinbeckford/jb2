@@ -1,6 +1,4 @@
 
-package yoyo;
-
 /**
  * @author colinbeckford
  * Clicker Timer program
@@ -26,7 +24,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -52,7 +49,7 @@ public class ClickerTimer extends JFrame implements KeyListener {
 	private JTextField txtJudgeName;
 	private JTextField txtPlayerName;
 	private JTextField txtCompetitionRound;
-	
+
 	//variable data that is updated throughout program being run
 	int clicker = 0;
 	int plus = 0;
@@ -71,59 +68,59 @@ public class ClickerTimer extends JFrame implements KeyListener {
 	static double[][] initialArray = new double[200][2];
 	//test to work on get best segment
 	static int segmentclicker = 0;
-	static ArrayList<String> segments = new ArrayList();
-	static ArrayList<Integer> intsegments = new ArrayList();
-	
-	
-	private static String secondsToString(int seconds) 
+	static ArrayList<String> segments = new ArrayList<String>();
+	static ArrayList<Integer> intsegments = new ArrayList<Integer>();
+
+
+	private static String secondsToString(int seconds)
 	{
 	    return String.format("%02d:%02d", seconds / 60, seconds % 60);
 	}
-	
-	
-	
+
+
+
 	//constructor for all of the labels, buttons, and textfields on the JFrame
 	public ClickerTimer() {
 		setVisible(true);
 		setSize(400, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		
+
 		input = new JTextField();
 		input.setBounds(6, 6, 388, 26);
 		getContentPane().add(input);
 		input.addKeyListener(this);
 		input.setColumns(10);
-		
-		
+
+
 		lblPlus.setFont(new Font("Lucida Bright", Font.PLAIN, 35));
 		lblPlus.setBounds(6, 42, 106, 31);
 		getContentPane().add(lblPlus);
-		
-		
+
+
 		lblMinus.setFont(new Font("Lucida Bright", Font.PLAIN, 35));
 		lblMinus.setBounds(6, 90, 106, 31);
 		getContentPane().add(lblMinus);
-	
+
 		lblRaw.setFont(new Font("Lucida Grande", Font.PLAIN, 50));
 		lblRaw.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRaw.setBounds(146, 49, 106, 100);
 		getContentPane().add(lblRaw);
-		
-	
+
+
 		lblPercentDouble.setBounds(6, 219, 217, 16);
 		getContentPane().add(lblPercentDouble);
-		
+
 		lblTimeCount.setBounds(6, 247, 191, 16);
 		getContentPane().add(lblTimeCount);
-		
+
 		lblCPS.setBounds(6, 275, 172, 16);
 		getContentPane().add(lblCPS);
-		
+
 		lblBestSegment.setBounds(6, 302, 303, 16);
 		getContentPane().add(lblBestSegment);
 		lblBestSegment.setVisible(true);
-		
+
 		txtJudgeName = new JTextField();
 		txtJudgeName.setHorizontalAlignment(SwingConstants.CENTER);
 		txtJudgeName.setText("Judge Name");
@@ -131,7 +128,7 @@ public class ClickerTimer extends JFrame implements KeyListener {
 		txtJudgeName.setVisible(true);
 		getContentPane().add(txtJudgeName);
 		txtJudgeName.setColumns(10);
-		
+
 		txtPlayerName = new JTextField();
 		txtPlayerName.setHorizontalAlignment(SwingConstants.CENTER);
 		txtPlayerName.setText("Player Name");
@@ -139,7 +136,7 @@ public class ClickerTimer extends JFrame implements KeyListener {
 		txtPlayerName.setVisible(true);
 		getContentPane().add(txtPlayerName);
 		txtPlayerName.setColumns(10);
-		
+
 		txtCompetitionRound = new JTextField();
 		txtCompetitionRound.setHorizontalAlignment(SwingConstants.CENTER);
 		txtCompetitionRound.setText("Contest & Round");
@@ -147,10 +144,10 @@ public class ClickerTimer extends JFrame implements KeyListener {
 		txtCompetitionRound.setVisible(true);
 		getContentPane().add(txtCompetitionRound);
 		txtCompetitionRound.setColumns(10);
-		
 
-		
-		
+
+
+
 		//action listener for the submit button which saves the text inputs into string variables (listed above)
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -162,27 +159,27 @@ public class ClickerTimer extends JFrame implements KeyListener {
 		btnSubmit.setBounds(148, 178, 117, 29);
 		btnSubmit.setVisible(true);
 		getContentPane().add(btnSubmit);
-		
+
 		JButton btnStartVideo = new JButton("Start Video");
 		btnStartVideo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
+			public void actionPerformed(ActionEvent e)
 			{
 				ClickerTimer.startvideo();
 			}
 		});
 		btnStartVideo.setBounds(270, 44, 117, 29);
 		getContentPane().add(btnStartVideo);
-		
-		
-		
-		
+
+
+
+
 		lblCPS.setVisible(false);
 	}
 	//creates an instance of the Timer class to have a consistent time during the scoring
 	static Timer timer = new Timer();
 	//timertask to be ran once the timer is activated
 	static TimerTask task = new TimerTask() {
-		public void run () 
+		public void run ()
 		{
 			//incrementing of a counter of seconds that is displayed on a label
 			centisecondsPassed++;
@@ -190,17 +187,17 @@ public class ClickerTimer extends JFrame implements KeyListener {
 		}
 	};
 	//start command for timer
-	public static void start () 
+	public static void start ()
 	{
 		timer.scheduleAtFixedRate(task, 1000, 10);
-		
+
 	}
-	
+
 	//creates an instance of the Timer class to have a consistent time during the scoring
 		static Timer timervideo = new Timer();
 		//timertask to be ran once the timer is activated
 		static TimerTask taskvideo = new TimerTask() {
-			public void run () 
+			public void run ()
 			{
 				//incrementing of a counter of seconds that is displayed on a label
 				centisecondsPassedvideo++;
@@ -212,29 +209,29 @@ public class ClickerTimer extends JFrame implements KeyListener {
 					intsegments.add(segmentclicker);
 					segmentclicker = 0;
 				}
-				
+
 			}
 		};
 		//start command for timer
-		public static void startvideo () 
+		public static void startvideo ()
 		{
 			timervideo.scheduleAtFixedRate(taskvideo, 1000, 10);
-			
+
 		}
-	
+
 	public static double[][] filter()
 	{
 	double[][] finalArray = new double[keypress][2];
 	 for (int i = 0; i < keypress; i++)
 	 {
-		
-        finalArray[i][0] = initialArray[i][0]; 
+
+        finalArray[i][0] = initialArray[i][0];
         	finalArray[i][1] = initialArray[i][1];
-        	
+
 	 }
 	 return finalArray;
 	}
-	
+
 	public void getbestsegment()
 	{
 		int max = Integer.MIN_VALUE;
@@ -247,11 +244,11 @@ public class ClickerTimer extends JFrame implements KeyListener {
 	            maxindex = i;
 	        }
 	    }
-	   
+
 
 	    lblBestSegment.setText((segments.get(maxindex)));
 	}
-	
+
 //where anAction is a javax.swing.Action
 	//unused
 	public void keyTyped(KeyEvent e) {
@@ -287,12 +284,12 @@ public class ClickerTimer extends JFrame implements KeyListener {
 			{
 				clickTimes.add(1 + " click at " + centisecondsPassedvideo/100 + " second");
 			}
-			
+
 			//explained below
 			lblPercentDouble.setText("" + (two*100/plus) + "% double clicks");
-			
-			initialArray[keypress-1][0] = 1;
-			initialArray[keypress-1][1] = centisecondsPassedvideo/100;		
+
+			initialArray[keypress-1][0] = clicker;
+			initialArray[keypress-1][1] = centisecondsPassedvideo/100;
 		}
 		//the number 2 being pressed will add two clicks to the overall clicker and to the strictly + click counter, as well as flash a different color on the screen to show difficulty
 		//the +2 difficulty click is also being used in a consistently updating string that displays the percentage of total clicks being +2 (difficult),
@@ -318,11 +315,11 @@ public class ClickerTimer extends JFrame implements KeyListener {
 			{
 				clickTimes.add(2 + " clicks at " + centisecondsPassedvideo/100 + " seconds");
 			}
-			
-			
-			initialArray[keypress-1][0] = 2;
+
+
+			initialArray[keypress-1][0] = clicker;
 			initialArray[keypress-1][1] = centisecondsPassedvideo/100;
-			
+
 		}
 		//the minus key being pressed will deduct one click from the overall clicker and add one click  to the strictly - click counter
 			//it will also add a string to the arrayList that states "1 miss at " + whatever second it is clicked
@@ -343,10 +340,10 @@ public class ClickerTimer extends JFrame implements KeyListener {
 			{
 				clickTimes.add(1 + " miss at " + centisecondsPassedvideo/100 + " seconds");
 			}
-			
-			initialArray[keypress-1][0] = -1;
+
+			initialArray[keypress-1][0] = clicker;
 			initialArray[keypress-1][1] = centisecondsPassedvideo/100;
-			
+
 		}
 		//the number 0 being pressed acts as a stopper for the timer, while showing the completed data
 		if (keyCode == KeyEvent.VK_0)
@@ -375,31 +372,33 @@ public class ClickerTimer extends JFrame implements KeyListener {
 			    **/
 			    BufferedWriter br = new BufferedWriter(new FileWriter("/Users/colinbeckford/Desktop/Code/JB2SavedData/" + playerName + "_" + CompetitionRound + "_by_" + judgeName + ".csv"));
 			    StringBuilder sb = new StringBuilder();
+					sb.append("Time" + ", " + "Score" + '\n');
 			    for (int i=0; i<keypress; i++) {
-			    sb.append("[" + ClickerTimer.filter()[i][0] + " " + ClickerTimer.filter()[i][1] + "], ");
+			    sb.append(ClickerTimer.filter()[i][1] + ", " + ClickerTimer.filter()[i][0] + '\n');
 			    }
 			    br.write(sb.toString());
 			    br.close();
-			    
+
+
 			    }
 			 catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 		}
-	
-		
+
+
 	}
 
 
-		
-	
+
+
 	//main method to run the clicker timer
 	public static void main(String[] args)
 	{
 		ClickerTimer test = new ClickerTimer();
-		
-		
+
+
 	}
 }
