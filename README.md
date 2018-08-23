@@ -1,6 +1,6 @@
 # jb2
 
-"Jb2" is a Scales Collective collaboration on making an optimal yo-yo freestyle clicker.
+"Jb2" is an attempt to make an optimal yo-yo freestyle clicker.
 
 Created through Java Swing Designer, this frame application serves as a clicker for the technical portion of yo-yo routines, but also has extra data points such as the percentage of total clicks that were given as "+2" difficult clicks, the clicks per second at the end of the routine, and even an exported CSV of the seconds that the user gave +1, +2, or -1. 
 
